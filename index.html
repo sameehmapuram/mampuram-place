@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mampuram - A Historic Spiritual Center</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <!-- Internal CSS -->
+    <style>
+        /* Existing styles unchanged except for body background */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFFFFF;
+            color: #333;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #28a745 !important;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://images.picxy.com/cache/2020/6/5/0f07b274f7bceb720f3be0b8f2d40855.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .hero-section h1 {
+            animation: fadeInDown 1s ease-out;
+        }
+        .hero-section p {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        .hero-section .btn {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        .section-title {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #28a745;
+            animation: slideIn 0.5s ease-out;
+        }
+        .feature-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover img {
+            transform: scale(1.05);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #28a745;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        .gallery-img {
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+        .gallery-img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
+        }
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: bounceIn 1s ease-out;
+        }
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+        .testimonial-img:hover {
+            transform: rotate(360deg);
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-icon:hover {
+            color: #28a745;
+            transform: scale(1.2);
+        }
+        .btn-success {
+            transition: transform 0.2s;
+        }
+        .btn-success:hover {
+            transform: scale(1.1);
+        }
+        /* About Section Specific Styles */
+        .about-img {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .about-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .about-text h3 {
+            animation: slideInRight 0.8s ease-out;
+        }
+        .about-text p {
+            animation: slideInRight 0.8s ease-out;
+        }
+        .about-text .btn {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .about-text .btn:hover {
+            transform: translateY(-3px);
+            background-color: #218838;
+        }
+        /* Map Styling */
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            min-height: 300px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .map-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        /* Contact Section Styling */
+        .contact-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: slideInLeft 0.8s ease-out;
+        }
+        .contact-form .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+        .contact-info {
+            animation: slideInRight 0.8s ease-out;
+        }
+        .contact-info i {
+            color: #28a745;
+            margin-right: 10px;
+        }
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        /* Custom Keyframes */
+        @keyframes slideIn {
+            from {
+                width: 0;
+            }
+            to {
+                width: 80px;
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes zoomInRotate {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(-5deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top animate__animated animate__fadeInDown">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mampuram</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Welcome to Mampuram</h1>
+            <p class="lead mb-5 animate__animated animate__fadeInUp">Experience the spiritual heritage and historical significance of this sacred site</p>
+            <a href="#about" class="btn btn-success btn-lg px-4 me-2 animate__animated animate__fadeInUp">Explore</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg px-4 animate__animated animate__fadeInUp">Visit Us</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">About Mampuram</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <img src="https://i.ytimg.com/vi/JEZCPu_V76Q/maxresdefault.jpg" alt="Mampuram Maqam" class="img-fluid rounded about-img" style="animation: slideInLeft 0.8s ease-out;">
+                </div>
+                <div class="col-lg-6 about-text">
+                    <h3 style="animation-delay: 0.2s;">A Sacred Pilgrimage Site</h3>
+                    <p style="animation-delay: 0.4s;">Mampuram Maqam is located in Tirurangadi Taluk of Malappuram district, Kerala, India. The exact address is:</p>
+                    <p style="animation-delay: 0.4s; font-weight: bold;">Mampuram Maqam,<br>
+                    Abdul Rahman Nagar Panchayath,<br>
+                    Tirurangadi, Malappuram District,<br>
+                    Kerala, India - 676306</p>
+                    <p style="animation-delay: 0.6s;"><strong>Geographical Location:</strong><br>
+                    Mampuram is situated near the Kadalundi River, approximately 6 km south of Tirurangadi town. The coordinates are 11.0429° N latitude and 75.8707° E longitude.</p>
+                    <p style="animation-delay: 0.8s;"><strong>Accessibility:</strong><br>
+                    The site is well-connected by road and is about 30 km from Kozhikode (Calicut) city. The nearest railway station is Tirurangadi (6 km away), and the nearest airport is Calicut International Airport (approximately 35 km away).</p>
+                    <a href="#contact" class="btn btn-outline-success" style="animation: slideInRight 0.8s ease-out 1s;">How to Reach</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Key Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card card p-4 text-center animate__animated animate__zoomIn">
+                        <div class="feature-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiueKO3veb2sghBb9iBkT1K0HkhH2nOHRKDw&s" alt="Mampuram Mosque">
+                        <h3>Mampuram Maqam</h3>
+                        <p>The sacred shrine of Sayyid Alavi Thangal, a revered Islamic scholar and spiritual leader, attracting thousands of devotees annually.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card p-4 text-center animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pirogue_running_on_the_Mekong_at_golden_hour_between_Don_Det_and_Don_Khon_Laos.jpg/1280px-Pirogue_running_on_the_Mekong_at_golden_hour_between_Don_Det_and_Don_Khon_Laos.jpg" alt="Kadalundi River">
+                        <h3>mampuram River</h3>
+                        <p>The serene Kadalundi River flows near the Maqam, adding to the spiritual ambiance and natural beauty of the location.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card p-4 text-center animate__animated animate__zoomIn" style="animation-delay: 0.4s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <img src="https://ernad.in/admin/public/uploads/gallery/gallery_19.jpg" alt="Historical Site">
+                        <h3>Historical Significance</h3>
+                        <p>Site of important historical events during the British colonial period and the Malabar Rebellion.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card p-4 text-center animate__animated animate__zoomIn" style="animation-delay: 0.6s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Staples_High_School%2C_Westport%2C_CT.jpg" alt="Educational Institutions">
+                        <h3>Educational Hub</h3>
+                        <p>Home to several educational institutions including the Mampuram Arabic College, continuing Thangal's legacy of learning.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card p-4 text-center animate__animated animate__zoomIn" style="animation-delay: 0.8s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <img src="https://www.jll.co.in/images/apac/australia/articles/jll-local-shops-get-a-lift-as-consumers-focus-on-daily-needs-teaser-800x600.jpg.rendition/desktop.jpg" alt="Local Cuisine">
+                        <h3>Local Cuisine</h3>
+                        <p>Experience authentic Malabari Muslim cuisine at local eateries near the Maqam.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card p-4 text-center animate__animated animate__zoomIn" style="animation-delay: 1s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <img src="https://imagesvs.oneindia.com/ml/img/2018/01/palam-08-1515393548.jpg" alt="Annual Festivals">
+                        <h3>Annual Festivals</h3>
+                        <p>Witness grand celebrations during the annual Urs festival and other important Islamic occasions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Photo Gallery</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/%E0%B4%AE%E0%B4%AE%E0%B5%8D%E0%B4%AA%E0%B5%81%E0%B4%B1%E0%B4%82_%E0%B4%A4%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B4%B3%E0%B5%81%E0%B4%9F%E0%B5%86_%E0%B4%B5%E0%B5%80%E0%B4%9F%E0%B5%8D%E2%80%8C.jpg" alt="Mampuram Maqam" class="img-fluid gallery-img" style="animation: zoomInRotate 0.8s ease-out;">
+                </div>
+                <div class="col-md-4">
+                    <img src="https://imagesvs.oneindia.com/ml/img/2018/02/mampuram-1518859150.jpg" alt="Mampuram Mosque interior" class="img-fluid gallery-img" style="animation: zoomInRotate 0.8s ease-out 0.2s;">
+                </div>
+                <div class="col-md-4">
+                    <img src="https://i.ytimg.com/vi/D7b7Wx-J0PE/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-DoACuAiKAgwIABABGDAgZShVMA8=&rs=AOn4CLARpGY9Zfg1m0-j3-5UzvDlo-Ycrw" alt="Mampuram surroundings" class="img-fluid gallery-img" style="animation: zoomInRotate 0.8s ease-out 0.4s;">
+                </div>
+                <div class="col-md-6">
+                    <img src="https://ernad.in/admin/public/uploads/gallery/gallery_19.jpg" alt="Annual Urs festival" class="img-fluid gallery-img" style="animation: zoomInRotate 0.8s ease-out 0.6s;">
+                </div>
+                <div class="col-md-6">        
+                    <img src="https://c8.alamy.com/comp/2YDF355/mampuram-maqam-is-one-of-the-leading-shrines-of-south-india-locating-near-the-kadalundi-river-in-abdurahman-nagar-panchayath-of-tirurangadi-2YDF355.jpg" alt="Mampuram at sunset" class="img-fluid gallery-img" style="animation: zoomInRotate 0.8s ease-out 0.8s;">
+                </div>
+                <div class="col-md-6">        
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-c/1280x250/0c/41/2a/8d/cheruppadimala.jpg" alt="Mampuram Arabic College" class="img-fluid gallery-img" style="animation: zoomInRotate 0.8s ease-out 0.8s;">
+                </div>
+                 <div class="col-md-6">        
+                    <img src="https://www.youthkiawaaz.com/wp-content/uploads/2024/03/Photo-1-players-before-the-start-of-match-1.jpg" alt="Mampuram Arabic College" class="img-fluid gallery-img" style="animation: zoomInRotate 0.8s ease-out 0.8s;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Visitor Experiences</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial-card animate__animated animate__bounceIn">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://lsgkerala.gov.in/electionupdates/uploads/photos/2020095702001.jpg" alt="Abdul Rasheed Kondanath" class="testimonial-img">
+                            <div>
+                                <h5 class="mb-0">Abdul Rasheed Kondanath</h5>
+                                <small>From Mampuram Ward Member</small>
+                            </div>
+                        </div>
+                        <p>"Mampuram Maqam is not just a religious site but a center of cultural heritage. The peaceful atmosphere and spiritual energy here are truly uplifting for visitors."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Contact Us</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-form">
+                        <h3 class="mb-4">Get in Touch</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 contact-info">
+                    <h3 class="mb-4">Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Mampuram Maqam, Abdul Rahman Nagar Panchayath, Tirurangadi, Malappuram District, Kerala, India - 676306</p>
+                    <a href="tel:+919995044137" style="text-decoration: none; color: black;"><p><i class="fas fa-phone"></i> +91 9995044137</p></a>
+                    <p><i class="fas fa-envelope"></i> info@mampurammaqam.org</p>
+                    <h4 class="mt-4 map-title">location</h4>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18594.37715300633!2d75.9128899681526!3d11.05612210232181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba64d7241274465%3A0xb9a10a35705aee65!2sMampuram%20Maqam!5e0!3m2!1sen!2sin!4v1747641399849!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About Mampuram</h5>
+                    <p>Mampuram Maqam is a revered spiritual and historical site in Kerala, India, known for its cultural significance and serene ambiance.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="#features" class="text-white text-decoration-none">Features</a></li>
+                        <li><a href="#gallery" class="text-white text-decoration-none">Gallery</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Follow Us</h5>
+                    <a href="https://www.facebook.com/share/1C1hTfS5v4/?mibextid=qi2Omg" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/_.winners._fc?igsh=Y2dubmtvY2UzbWky" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Mampuram Maqam. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
